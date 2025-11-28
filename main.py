@@ -3,8 +3,8 @@
 # from package_first.test import a, b
 
 
-# # print(a)
-# # print(b)
+# print(a)
+# print(b)
 
 
 # from package_second.mathematics import add_two_numbers
@@ -49,6 +49,12 @@
 
 
 
+# If else conditionals
+
+# from package_third.flow_control import name_checker
+
+# name_checker()
 
 
 
+from package_third.func import *
