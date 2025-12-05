@@ -29,6 +29,7 @@
 # record_family_details -> list append
 # halt_checker -> ask wheter to halt or not
 # smart_calculator or smart_analyzer -> 
+import time
 import tabulate
 
 family_records = []
@@ -203,22 +204,35 @@ def main_func(name):
     return name
 
 
-names = ["Sagar Sedai", "Ushan Thapa", "Kiran Pandey", "Ratnakar Daku", "Krishna Ko Mama Kansha", "Ram Thief"]
-mod_names = [main_func(i) for i in names]
+# names = ["Sagar Sedai", "Ushan Thapa", "Kiran Pandey", "Ratnakar Daku", "Krishna Ko Mama Kansha", "Ram Thief"]
+# mod_names = [main_func(i) for i in names]
 
-print(mod_names)
-
-
+# print(mod_names)
 
 
 names = ["ram","shyam","ram","rita","shyam","sita","gita","gita"]
 
-{
-    "ram":[0,2],
-    "shyam":[1,4], 
-}
+# {
+#     "ram":[0,2],
+#     "shyam":[1,4], 
+# }
+
+# info = {}
+
+# names_set = list(set(names))
+
+# info = {i :[] for i in names_set}
 
 
+# for index,i in enumerate(names):
+#     if i in info:
+#         info[i].append(index)
+#     else:
+#         info[i] = [index]
+# 0
+# print(info)
+
+# next(j for j,v in enumerate(names) if v == i)
 
 # (i for i in range(5) if i < 2) # -> (0,1)
 
@@ -231,7 +245,6 @@ names = ["ram","shyam","ram","rita","shyam","sita","gita","gita"]
 
 
 
-
 # # Open a file for reading
 # with open('example.txt', 'r') as file:
 #     content = file.read()  # Reads the entire content
@@ -239,43 +252,75 @@ names = ["ram","shyam","ram","rita","shyam","sita","gita","gita"]
 
 # # Read line by line
 # with open('example.txt', 'r') as file:
-#     for line in file:
-#         print(line.strip()) # strip() removes newline characters
+#     for index, line in enumerate(file):
+#         if index in range(5,15):
+#             print(line.strip()) # strip() removes newline characters
+
+
 
 # # Open a file for writing (overwrites existing content)
-# with open('new_file.txt', 'w') as file:
-#     file.write("This is the first line.\n")
-#     file.write("This is the second line.")
+# with open('example.txt', 'wb') as file:
+#     for i in range(0,15):
+#         # time.sleep(60*60*24)
+#         bytes_text = f"This is the line number {i+1}.\n".encode()
+#         file.write(bytes_text)
+#         print(f"Wrote {i} line")
+    # file.write("This is the second line.")
 
 # # Open a file for appending (adds to the end)
 # with open('new_file.txt', 'a') as file:
 #     file.write("\nThis line is appended.")
 
+# i+=1 #=> i=i+1
 
-# import os
+import os
 
 # # Get the current working directory
 # current_directory = os.getcwd()
 # print(f"Current directory: {current_directory}")
 
-# # Join path components intelligently
-# file_path = os.path.join(current_directory, 'data', 'report.txt')
+# dirss = ['data', 'ram', 'shyam', 'sita','gita','rita'] * 100
+# # # Join path components intelligently
+# file_path = os.path.join(current_directory, *dirss , 'report.txt')
 # print(f"Constructed file path: {file_path}")
 
-# # Get the directory name from a path
+# # # Get the directory name from a path
 # directory_name = os.path.dirname(file_path)
 # print(f"Directory name: {directory_name}")
 
-# # Get the base name (filename) from a path
+# # # Get the base name (filename) from a path
 # base_name = os.path.basename(file_path)
 # print(f"Base name: {base_name}")
 
-# # Check if a path exists
+# os.makedirs(os.path.join(current_directory, *dirss ), exist_ok=True)
+
+# # # Check if a path exists
 # if os.path.exists(file_path):
 #     print(f"{file_path} exists.")
 # else:
+#     file = open(file_path,mode="w")
+#     file.close()
+
 #     print(f"{file_path} does not exist.")
 
-# # Create directories (if they don't exist)
-# os.makedirs(os.path.join(current_directory, 'temp_data'), exist_ok=True)
+# # # Create directories (if they don't exist)
+# os.makedirs(os.path.join(current_directory, 'data'), exist_ok=True)
 # print("temp_data directory created (if it didn't exist).")
+
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+# email = os.getenv("EMAIL")
+# breakpoint()
+
+
+
+
+import csv
+
+# Example: Reading from a CSV file using DictReader
+with open('sample.csv', 'r', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        print(row['Symbol'], row['High Price']) # Access data by field name (key)
