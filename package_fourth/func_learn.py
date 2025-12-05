@@ -29,6 +29,8 @@
 # record_family_details -> list append
 # halt_checker -> ask wheter to halt or not
 # smart_calculator or smart_analyzer -> 
+import csv
+import json
 import time
 import tabulate
 
@@ -317,10 +319,74 @@ import os
 
 
 
-import csv
+# import csv, tabulate
 
-# Example: Reading from a CSV file using DictReader
-with open('sample.csv', 'r', newline='') as csvfile:
+# # Example: Reading from a CSV file using DictReader
+# with open('people.csv', 'r', newline='') as csvfile:
+#     reader = csv.DictReader(csvfile)
+#     items = []
+#     for row in reader:
+#         items.append(row)
+
+#     table_data = tabulate.tabulate(items)
+#     print(table_data)
+
+# data = [{'name': 'Alice', 'age': 30, 'city': 'New York'},
+#         {'name': 'Bob', 'age': 25, 'city': 'Los Angeles'}]
+# fields = ['name', 'age', 'city']
+
+# with open('people.csv', 'w', newline='') as file:
+#     writer = csv.DictWriter(file, fieldnames=fields)
+#     writer.writeheader() # Writes the 'name,age,city' header
+#     writer.writerows(data) # Writes the list of dictionaries
+
+
+# name, age, city
+# Alice, 30, New York
+# Alices, 13, New Yorks
+
+
+# import json
+
+# with open("abc.json", "r") as fp:
+#     data = json.load(fp)
+#     print(data)
+
+# with open("abc.json", "w") as fp:
+#     json.dump([{"name":"Kiran Pandey", "age":22,}], fp, indent=5)
+
+
+data = []
+
+for i in range(5):
+    data.append(
+        dict(
+            name = input("Enter your name \n"),
+            age = input("Enter your age \n"),
+            city = input("Enter your city \n"),
+        )
+    )
+
+fields = ["name","age","city"]
+with open('sample_file.csv', 'w', newline='') as file:
+
+    writer = csv.DictWriter(file, fieldnames=fields)
+    writer.writeheader() # Writes the 'name,age,city' header
+    writer.writerows(data) # Writes the list of dictionaries
+
+
+items = []
+with open('sample_file.csv', 'r', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        print(row['Symbol'], row['High Price']) # Access data by field name (key)
+        items.append(row)
+
+
+with open("sample_file.json", "w") as fp:
+    json.dump(items,fp, indent=2)
+
+with open("sample_file.json", "r") as fp:
+    response_data = json.load(fp)
+    print(tabulate.tabulate(response_data))
+
+

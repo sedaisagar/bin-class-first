@@ -59,4 +59,6 @@
 
 # from package_third.func import *
 
-from package_fourth.func_learn import *
+# from package_fourth.func_learn import *
+# import package_fifth.basic_gui
+import package_sixth.cl_obj
